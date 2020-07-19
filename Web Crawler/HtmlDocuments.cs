@@ -20,18 +20,18 @@ namespace Web_Crawler
             htmlDocument.LoadHtml(await GetConnection());
             return htmlDocument;
         }
-        public static string GetSpecificNode(HtmlNode htmlNode, string FirstChild, string Selector, string NameClass)
+        public static string GetSpecificNode(HtmlNode htmlNode, string firstChild, string selector, string nameClass)
         {
 
-            return htmlNode.Descendants($"{FirstChild}").Where(node => node.GetAttributeValue($"{Selector}", "")
-                     .Equals($"{NameClass}")).FirstOrDefault().InnerText;
+            return htmlNode.Descendants($"{firstChild}").Where(node => node.GetAttributeValue($"{selector}", "")
+                     .Equals($"{nameClass}")).FirstOrDefault().InnerText;
 
 
         }
-        public static List<HtmlNode> GetInformationNode(HtmlDocument HtmlDocument, string FirstChild, string Selector, string NameClass)
+        public static List<HtmlNode> GetInformationNode(HtmlDocument htmlDocument, string firstChild, string selector, string nameClass)
         {
-            return HtmlDocument.DocumentNode.Descendants($"{FirstChild}")
-                    .Where(node => node.GetAttributeValue($"{Selector}", "").Equals($"{NameClass}")).ToList();
+            return htmlDocument.DocumentNode.Descendants($"{firstChild}")
+                    .Where(node => node.GetAttributeValue($"{selector}", "").Equals($"{nameClass}")).ToList();
         }
     }
 }

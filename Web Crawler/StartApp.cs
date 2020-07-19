@@ -10,8 +10,8 @@ namespace Web_Crawler
             while (true)
             {
                 ConsoleDisplay.ShowOptions();
-                string Case = Console.ReadLine().ToString();
-                switch (Case)
+                string caseEntry = Console.ReadLine().ToString();
+                switch (caseEntry)
                 {
                     case "a":
                         ConsoleDisplay.ShowEntriesList(await AssemblyEntries.GetEntries('a'));
@@ -23,7 +23,7 @@ namespace Web_Crawler
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine($"An unexpected value ({Case})");
+                        Console.WriteLine($"An unexpected value ({caseEntry})");
                         break;
                 }
             }

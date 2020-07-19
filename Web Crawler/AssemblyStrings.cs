@@ -12,11 +12,11 @@ namespace Web_Crawler
             item = item == "" ? "0" : item;
             return item;
         }
-        public static List<Entries> Filter(List<Entries> list_entries, char Option)
+        public static List<Entries> Filter(List<Entries> listEntries, char option)
         {
             List<Entries> listMore5 = new List<Entries>();
             List<Entries> listless5 = new List<Entries>();
-            foreach (var item in list_entries)
+            foreach (var item in listEntries)
             {
                 item.Comments = AsignCeroEmpty(item.Comments);
                 item.Points = AsignCeroEmpty(item.Points);
@@ -31,25 +31,25 @@ namespace Web_Crawler
 
             }
 
-            return OrderEntry(Option, listMore5, listless5);
+            return OrderEntry(option, listMore5, listless5);
         }
-        private static List<Entries> OrderEntry(char Option, List<Entries> listMore5, List<Entries> listless5)
+        private static List<Entries> OrderEntry(char option, List<Entries> listMore5, List<Entries> listless5)
         {
-            List<Entries> ascendingOrder = Option == 'a' ?
+            List<Entries> ascendingOrder = option == 'a' ?
                     listMore5.OrderBy(i => Int16.Parse(i.Comments)).ToList() :
                     listless5.OrderBy(i => Int16.Parse(i.Points)).ToList();
             return ascendingOrder;
         }
 
-        public static List<Entries> GetNumbersString(List<Entries> list_entries)
+        public static List<Entries> GetNumbersString(List<Entries> listEntries)
         {
-            foreach (var item in list_entries)
+            foreach (var item in listEntries)
             {
                 item.Order = GetOnlyNumbers(item.Order);
                 item.Points = GetOnlyNumbers(item.Points);
                 item.Comments = GetOnlyNumbers(item.Comments);
             }
-            return list_entries;
+            return listEntries;
         }
         private static string GetOnlyNumbers(string attribute)
         {

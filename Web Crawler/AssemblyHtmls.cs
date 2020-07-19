@@ -10,16 +10,16 @@ namespace Web_Crawler
         public async static Task<List<Entries>> GetHtmlTags()
         {
 
-            string htmlElement = "td";
-            string Selector = "class";
-            string nameClass = "title";
+           const string htmlElement = "td";
+           const string selector = "class";
+           const string nameClass = "title";
 
-            var trs = HtmlDocuments.GetInformationNode(await HtmlDocuments.GetHtmlDocument(), "tr", Selector, "athing");
-            var tds = HtmlDocuments.GetInformationNode(await HtmlDocuments.GetHtmlDocument(), htmlElement, Selector, "subtext");
+            var trs = HtmlDocuments.GetInformationNode(await HtmlDocuments.GetHtmlDocument(), "tr", selector, "athing");
+            var tds = HtmlDocuments.GetInformationNode(await HtmlDocuments.GetHtmlDocument(), htmlElement, selector, "subtext");
 
-            return ParseHtmlEntry(trs, tds, htmlElement, Selector, nameClass);
+            return ParseHtmlEntry(trs, tds, htmlElement, selector, nameClass);
         }
-        private static List<Entries> ParseHtmlEntry(List<HtmlNode> trs, List<HtmlNode> tds, string htmlElement, string Selector, string nameClass)
+        private static List<Entries> ParseHtmlEntry(List<HtmlNode> trs, List<HtmlNode> tds, string htmlElement, string selector, string nameClass)
         {
             List<Entries> list_entries = new List<Entries>();
             for (int i = 0; i < tds.Count(); i++)
@@ -30,9 +30,9 @@ namespace Web_Crawler
                     {
                         Entries entry = new Entries
                         {
-                            Title = trs[j].Descendants(htmlElement).Where(node => node.GetAttributeValue(Selector, "").Equals(nameClass)).Last().InnerText,
-                            Order = HtmlDocuments.GetSpecificNode(trs[j], htmlElement, Selector, nameClass),
-                            Points = HtmlDocuments.GetSpecificNode(tds[j], htmlElement = "span", Selector, nameClass = "score"),
+                            Title = trs[j].Descendants(htmlElement).Where(node => node.GetAttributeValue(selector, "").Equals(nameClass)).Last().InnerText,
+                            Order = HtmlDocuments.GetSpecificNode(trs[j], htmlElement, selector, nameClass),
+                            Points = HtmlDocuments.GetSpecificNode(tds[j], htmlElement = "span", selector, nameClass = "score"),
                             Comments = tds[j].Descendants(htmlElement = "a").Last().InnerText
                         };
                         htmlElement = "td";

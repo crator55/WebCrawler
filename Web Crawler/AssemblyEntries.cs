@@ -7,8 +7,8 @@ namespace Web_Crawler
     {
         public static async Task<List<Entries>> GetEntries(char Case)
         {
-            Task<List<Entries>> list_entries = StartCrawlerAsync();
-            List<Entries> entries = await list_entries;
+            Task<List<Entries>> listEntries = StartCrawlerAsync();
+            List<Entries> entries = await listEntries;
             List<Entries> listFiltered = AssemblyStrings.Filter(entries, Case);
             return listFiltered;
 

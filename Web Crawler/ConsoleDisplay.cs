@@ -16,11 +16,11 @@ namespace Web_Crawler
 
         }
 
-        public static void ShowEntriesList(List<Entries> list_entries)
+        public static void ShowEntriesList(List<Entries> listEntries)
         {
 
             Console.Clear();
-            foreach (var item in list_entries)
+            foreach (var item in listEntries)
             {
                 Console.WriteLine("Title:" + $"{item.Title}");
                 Console.WriteLine("Points:" + $"{item.Points}");
