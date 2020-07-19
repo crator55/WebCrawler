@@ -1,0 +1,15 @@
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\bin\Debug\netcoreapp3.1\Web Crawler.exe
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\bin\Debug\netcoreapp3.1\Web Crawler.deps.json
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\bin\Debug\netcoreapp3.1\Web Crawler.runtimeconfig.json
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\bin\Debug\netcoreapp3.1\Web Crawler.runtimeconfig.dev.json
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\bin\Debug\netcoreapp3.1\Web Crawler.dll
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\bin\Debug\netcoreapp3.1\Web Crawler.pdb
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\bin\Debug\netcoreapp3.1\HtmlAgilityPack.dll
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\obj\Debug\netcoreapp3.1\Web Crawler.AssemblyInfoInputs.cache
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\obj\Debug\netcoreapp3.1\Web Crawler.AssemblyInfo.cs
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\obj\Debug\netcoreapp3.1\Web Crawler.csproj.CoreCompileInputs.cache
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\obj\Debug\netcoreapp3.1\Web Crawler.csproj.CopyComplete
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\obj\Debug\netcoreapp3.1\Web Crawler.dll
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\obj\Debug\netcoreapp3.1\Web Crawler.pdb
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\obj\Debug\netcoreapp3.1\Web Crawler.genruntimeconfig.cache
+C:\Users\rapto\source\repos\Web Crawler\Web Crawler\obj\Debug\netcoreapp3.1\Web Crawler.csprojAssemblyReference.cache
