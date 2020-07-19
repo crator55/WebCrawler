@@ -23,7 +23,7 @@ namespace Web_Crawler
                         ShowEntriesList(await GetEntries('a'));
                         break;
                 case "b":
-                        ShowEntriesList(await GetEntries('a'));
+                        ShowEntriesList(await GetEntries('b'));
                         break;
                 case "c":
                         Environment.Exit(0);
@@ -87,27 +87,29 @@ namespace Web_Crawler
             var html = await httpClient.GetStringAsync(url);
             return html;
         }
-        private static void GetHtmlDocument()
+        private static async Task<HtmlDocument> GetHtmlDocument()
+        {
+            HtmlDocument htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml(await GetHtmlPage());
+            return htmlDocument;
+        }
+        private async static Task<List<Entries>> GetHtmlTags()
         {
 
-        }
-       private static async Task<List<Entries>> StartCrawlerAsync()
-        {
-            
             string htmlElement = "td";
             string Selector = "class";
             string nameClass = "title";
 
-            HtmlDocument htmlDocument = new HtmlDocument();
-            htmlDocument.LoadHtml( await GetHtmlPage());
 
-            var trs = GetInformationNode(htmlDocument,"tr", Selector, "athing" );
-            var tds = GetInformationNode(htmlDocument, htmlElement, Selector, "subtext");
+            var trs = GetInformationNode(await GetHtmlDocument(), "tr", Selector, "athing");
+            var tds = GetInformationNode(await GetHtmlDocument(), htmlElement, Selector, "subtext");
 
-            List<Entries> list_entries = GetElemntsEntrie(trs,tds,htmlElement,Selector,nameClass);
-
-            GetNumbersString(list_entries);
-
+            List<Entries> list_entries = GetElemntsEntrie(trs, tds, htmlElement, Selector, nameClass);
+            return list_entries;
+        }
+        private static async Task<List<Entries>> StartCrawlerAsync()
+        {
+            GetNumbersString(await GetHtmlTags());
             return list_entries;
         }
         private static void ShowEntriesList(List<Entries> list_entries) {
