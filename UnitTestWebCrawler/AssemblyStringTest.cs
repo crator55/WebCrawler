@@ -10,7 +10,7 @@ namespace UnitTestWebCrawler
     public class AssemblyStringTest
     {
         [TestMethod]
-        public List<Entry> GetNumbersString_StringWithNumbers_ReturnsIntegers()
+        public void GetNumbersString_StringWithNumbers_ReturnsIntegers()
         {
             List<Entry> result = AssemblyString.GetNumbersString(Data.FakeData());
             int number;
@@ -20,12 +20,11 @@ namespace UnitTestWebCrawler
                 Assert.IsTrue(Int32.TryParse(item.Order, out number));
                 Assert.IsTrue(Int32.TryParse(item.Points, out number));
             }
-            return result;
         }
         [TestMethod]
         public void Filter_Optiona_ReturnsListFiltered()
         {
-            List<Entry> result = AssemblyString.Filter(GetNumbersString_StringWithNumbers_ReturnsIntegers(), Const.case1);
+            List<Entry> result = AssemblyString.Filter(Data.FakeDataWithOutNumbers(), Const.case1);
             bool less5 = false;
             foreach (var item in result)
             {
@@ -39,7 +38,7 @@ namespace UnitTestWebCrawler
         [TestMethod]
         public void Filter_Optionb_ReturnsListFiltered()
         {
-            List<Entry> result = AssemblyString.Filter(GetNumbersString_StringWithNumbers_ReturnsIntegers(), Const.case2);
+            List<Entry> result = AssemblyString.Filter(Data.FakeDataWithOutNumbers(), Const.case2);
             bool less5 = false;
             foreach (var item in result)
             {
