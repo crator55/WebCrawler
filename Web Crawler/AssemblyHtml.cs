@@ -18,36 +18,65 @@ namespace Web_Crawler
         public static List<Entry> ParseHtmlEntry(List<HtmlNode> trs, List<HtmlNode> tds, string htmlElement, string selector, string nameClass)
         {
             List<Entry> listEntries = new List<Entry>();
-            for (int i = 0; i < tds.Count(); i++)
+            try
             {
-                for (int j = 0; j < trs.Count(); j++)
+                for (int i = 0; i < tds.Count(); i++)
                 {
-                    if (i == j)
+                    for (int j = 0; j < trs.Count(); j++)
                     {
-                        Entry entry = new Entry
+                        if (i == j)
                         {
-                            Title = trs[j].Descendants(htmlElement).Where(node => node.GetAttributeValue(selector, "").Equals(nameClass)).Last().InnerText,
-                            Order = GetSpecificNode(trs[j], htmlElement, selector, nameClass),
-                            Points = GetSpecificNode(tds[j], htmlElement = "span", selector, nameClass = "score"),
-                            Comments = tds[j].Descendants(htmlElement = "a").Last().InnerText
-                        };
-                        htmlElement = "td";
-                        nameClass = "title";
-                        listEntries.Add(entry);
+                            Entry entry = new Entry
+                            {
+                                Title = trs[j].Descendants(htmlElement).Where(node => node.GetAttributeValue(selector, "").Equals(nameClass)).Last().InnerText,
+                                Order = GetSpecificNode(trs[j], htmlElement, selector, nameClass),
+                                Points = GetSpecificNode(tds[j], htmlElement = "span", selector, nameClass = "score"),
+                                Comments = tds[j].Descendants(htmlElement = "a").Last().InnerText
+                            };
+                            htmlElement = "td";
+                            nameClass = "title";
+                            listEntries.Add(entry);
+                        }
                     }
                 }
+                return listEntries;
             }
-            return listEntries;
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+           
         }
         private static string GetSpecificNode(HtmlNode htmlNode, string firstChild, string selector, string nameClass)
         {
-            return htmlNode.Descendants($"{firstChild}").Where(node => node.GetAttributeValue($"{selector}", "")
-                     .Equals($"{nameClass}")).FirstOrDefault().InnerText;
+            try
+            {
+                int indexPoints = htmlNode.InnerText.IndexOf("points");
+                int indexComments = htmlNode.InnerText.IndexOf("comments ");
+                if (indexPoints == -1 & indexComments == -1 &nameClass!="title")
+                {
+                    return "0";
+                }
+                return htmlNode.Descendants($"{firstChild}").Where(node => node.GetAttributeValue($"{selector}", "")
+                 .Equals($"{nameClass}")).FirstOrDefault().InnerText;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+         
         }
         private static List<HtmlNode> GetBodyNode(HtmlDocument htmlDocument, string firstChild, string selector, string nameClass)
         {
-            return htmlDocument.DocumentNode.Descendants($"{firstChild}")
-                    .Where(node => node.GetAttributeValue($"{selector}", "").Equals($"{nameClass}")).Take(30).ToList();
+            try
+            {
+                return htmlDocument.DocumentNode.Descendants($"{firstChild}")
+        .Where(node => node.GetAttributeValue($"{selector}", "").Equals($"{nameClass}")).Take(30).ToList();
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
     } 
 }

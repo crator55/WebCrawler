@@ -10,8 +10,16 @@ namespace Web_Crawler
     {
         public static async Task<string> GetPageString()
         {
-            HttpClient httpClient = new HttpClient();
-            return await httpClient.GetStringAsync(Const.Url);
+            try
+            {
+                HttpClient httpClient = new HttpClient();
+                return await httpClient.GetStringAsync(Const.Url);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+           
         }
         public static async Task<HtmlDocument> GetHtmlDocument()
         {
