@@ -5,21 +5,19 @@ using System.Linq;
 
 namespace Web_Crawler
 {
-   public class AssemblyStrings
+    public class AssemblyString
     {
         private static string AsignCeroEmpty(string item)
         {
             item = item == "" ? "0" : item;
             return item;
         }
-        public static List<Entries> Filter(List<Entries> listEntries, char option)
+        public static List<Entry> Filter(List<Entry> listEntries, string option)
         {
-            List<Entries> listMore5 = new List<Entries>();
-            List<Entries> listless5 = new List<Entries>();
+            List<Entry> listMore5 = new List<Entry>();
+            List<Entry> listless5 = new List<Entry>();
             foreach (var item in listEntries)
             {
-                item.Comments = AsignCeroEmpty(item.Comments);
-                item.Points = AsignCeroEmpty(item.Points);
                 if (item.Title.Split(' ', '-').Count() > 5)
                 {
                     listMore5.Add(item);
@@ -28,26 +26,24 @@ namespace Web_Crawler
                 {
                     listless5.Add(item);
                 }
-
             }
 
             return OrderEntry(option, listMore5, listless5);
         }
-        private static List<Entries> OrderEntry(char option, List<Entries> listMore5, List<Entries> listless5)
+        private static List<Entry> OrderEntry(string option, List<Entry> listMore5, List<Entry> listless5)
         {
-            List<Entries> ascendingOrder = option == 'a' ?
+            List<Entry> ascendingOrder = option == "a" ?
                     listMore5.OrderBy(i => Int16.Parse(i.Comments)).ToList() :
                     listless5.OrderBy(i => Int16.Parse(i.Points)).ToList();
             return ascendingOrder;
         }
-
-        public static List<Entries> GetNumbersString(List<Entries> listEntries)
+        public static List<Entry> GetNumbersString(List<Entry> listEntries)
         {
             foreach (var item in listEntries)
             {
                 item.Order = GetOnlyNumbers(item.Order);
-                item.Points = GetOnlyNumbers(item.Points);
-                item.Comments = GetOnlyNumbers(item.Comments);
+                item.Points = AsignCeroEmpty(GetOnlyNumbers(item.Points));
+                item.Comments = AsignCeroEmpty(GetOnlyNumbers(item.Comments));
             }
             return listEntries;
         }

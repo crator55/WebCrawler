@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Web_Crawler
 {
-   public class ConsoleDisplay
+    public class ConsoleDisplay
     {
         public static void ShowOptions()
         {
@@ -13,12 +13,10 @@ namespace Web_Crawler
             Console.WriteLine("\tb - Filtering less than or equal to five words in the title.");
             Console.WriteLine("\tc - Exit Aplication.");
             Console.Write("Your option? ");
-
         }
 
-        public static void ShowEntriesList(List<Entries> listEntries)
+        public static void ShowEntriesList(List<Entry> listEntries)
         {
-
             Console.Clear();
             foreach (var item in listEntries)
             {
@@ -27,7 +25,6 @@ namespace Web_Crawler
                 Console.WriteLine("Order:" + $"{item.Order}");
                 Console.WriteLine("Comments:" + $"{item.Comments}" + "\n");
             }
-
         }
     }
 }

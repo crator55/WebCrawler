@@ -10,16 +10,16 @@ namespace Web_Crawler
             while (true)
             {
                 ConsoleDisplay.ShowOptions();
-                string caseEntry = Console.ReadLine().ToString();
+                string caseEntry = Console.ReadLine();
                 switch (caseEntry)
                 {
-                    case "a":
-                        ConsoleDisplay.ShowEntriesList(await AssemblyEntries.GetEntries('a'));
+                    case Const.case1:
+                        ConsoleDisplay.ShowEntriesList(AssemblyString.Filter(await AssemblyEntry.GetEntries(), Const.case1));
                         break;
-                    case "b":
-                        ConsoleDisplay.ShowEntriesList(await AssemblyEntries.GetEntries('b'));
+                    case Const.case2:
+                        ConsoleDisplay.ShowEntriesList(AssemblyString.Filter(await AssemblyEntry.GetEntries(), Const.case2));
                         break;
-                    case "c":
+                    case Const.case3:
                         Environment.Exit(0);
                         break;
                     default:

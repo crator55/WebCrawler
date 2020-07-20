@@ -6,32 +6,18 @@ using System.Threading.Tasks;
 
 namespace Web_Crawler
 {
-   public class HtmlDocuments
+    public class HtmlDocuments
     {
-        private static async Task<string> GetConnection()
+        public static async Task<string> GetPageString()
         {
-            string url = "https://news.ycombinator.com/";
             HttpClient httpClient = new HttpClient();
-            return await httpClient.GetStringAsync(url);
+            return await httpClient.GetStringAsync(Const.Url);
         }
         public static async Task<HtmlDocument> GetHtmlDocument()
         {
             HtmlDocument htmlDocument = new HtmlDocument();
-            htmlDocument.LoadHtml(await GetConnection());
+            htmlDocument.LoadHtml(await GetPageString());
             return htmlDocument;
-        }
-        public static string GetSpecificNode(HtmlNode htmlNode, string firstChild, string selector, string nameClass)
-        {
-
-            return htmlNode.Descendants($"{firstChild}").Where(node => node.GetAttributeValue($"{selector}", "")
-                     .Equals($"{nameClass}")).FirstOrDefault().InnerText;
-
-
-        }
-        public static List<HtmlNode> GetInformationNode(HtmlDocument htmlDocument, string firstChild, string selector, string nameClass)
-        {
-            return htmlDocument.DocumentNode.Descendants($"{firstChild}")
-                    .Where(node => node.GetAttributeValue($"{selector}", "").Equals($"{nameClass}")).ToList();
-        }
+        } 
     }
 }

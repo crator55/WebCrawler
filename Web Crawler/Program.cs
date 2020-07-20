@@ -6,7 +6,7 @@ namespace Web_Crawler
     {
         static async Task Main(string[] args)
         {
-          await  StartApp.Starts();
+        await StartApp.Starts();
         }
     }
 }
