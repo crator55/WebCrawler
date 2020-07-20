@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace Web_Crawler
 {
     public class AssemblyHtml
-    {      
-        public async static Task<List<Entry>> GetHtmlTags()
+    {
+       public static List<HtmlNode> trs, tds;
+        public async static Task GetHtmlTags()
         {
-            var trs = GetBodyNode(await HtmlDocuments.GetHtmlDocument(), "tr", Const.Selector, "athing");
-            var tds = GetBodyNode(await HtmlDocuments.GetHtmlDocument(), Const.HtmlElement, Const.Selector, "subtext");
-            return ParseHtmlEntry(trs, tds,Const.HtmlElement,Const.Selector,Const.NameClass);
+             trs = GetBodyNode(await HtmlDocuments.GetHtmlDocument(), "tr", Const.Selector, "athing");
+             tds = GetBodyNode(await HtmlDocuments.GetHtmlDocument(), Const.HtmlElement, Const.Selector, "subtext");
         }
         public static List<Entry> ParseHtmlEntry(List<HtmlNode> trs, List<HtmlNode> tds, string htmlElement, string selector, string nameClass)
         {

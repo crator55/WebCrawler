@@ -14,7 +14,8 @@ namespace Web_Crawler
         } 
         private static async  Task<List<Entry>> StartCrawlerAsync()
         {
-            return AssemblyString.GetNumbersString(await AssemblyHtml.GetHtmlTags());
+            await AssemblyHtml.GetHtmlTags();
+            return AssemblyString.GetNumbersString(AssemblyHtml.ParseHtmlEntry(AssemblyHtml.trs,AssemblyHtml.tds,Const.HtmlElement,Const.Selector,Const.NameClass));
         }
     }
 }
