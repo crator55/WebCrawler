@@ -39,16 +39,15 @@ namespace UnitTestWebCrawler
         public void Filter_Optionb_ReturnsListFiltered()
         {
             List<Entry> result = AssemblyString.Filter(Data.FakeDataWithOutNumbers(), Const.case2);
-            bool less5 = false;
+            bool more5 = false;
             foreach (var item in result)
             {
-
                 if (item.Title.Split(' ', '-').Count() >= 5)
                 {
-                    less5 = true;
+                    more5 = true;
                 }
             }
-            Assert.IsFalse(less5);
+            Assert.IsFalse(more5);
         }
     }
 }

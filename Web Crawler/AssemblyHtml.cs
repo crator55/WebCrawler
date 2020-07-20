@@ -17,7 +17,7 @@ namespace Web_Crawler
         }
         public static List<Entry> ParseHtmlEntry(List<HtmlNode> trs, List<HtmlNode> tds, string htmlElement, string selector, string nameClass)
         {
-            List<Entry> list_entries = new List<Entry>();
+            List<Entry> listEntries = new List<Entry>();
             for (int i = 0; i < tds.Count(); i++)
             {
                 for (int j = 0; j < trs.Count(); j++)
@@ -33,11 +33,11 @@ namespace Web_Crawler
                         };
                         htmlElement = "td";
                         nameClass = "title";
-                        list_entries.Add(entry);
+                        listEntries.Add(entry);
                     }
                 }
             }
-            return list_entries;
+            return listEntries;
         }
         private static string GetSpecificNode(HtmlNode htmlNode, string firstChild, string selector, string nameClass)
         {

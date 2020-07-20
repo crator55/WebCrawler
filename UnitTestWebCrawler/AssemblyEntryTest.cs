@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Web_Crawler;
 
@@ -8,9 +9,10 @@ namespace UnitTestWebCrawler
     public  class AssemblyEntryTest
     {
         [TestMethod]
-        public void GetEntries()
+        public async Task GetEntries_ycombinatorPage_ReturnsEntries()
         {
-          Assert.IsNotNull(AssemblyEntry.GetEntries());
+          List<Entry>entries= await  AssemblyEntry.GetEntries();
+          Assert.IsNotNull(entries);
         }
     }
 }
