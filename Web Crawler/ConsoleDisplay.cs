@@ -9,8 +9,8 @@ namespace Web_Crawler
         public static void ShowOptions()
         {
             Console.WriteLine("Choose an option from the following list:");
-            Console.WriteLine("\ta - Filtering with more than five words in the title.");
-            Console.WriteLine("\tb - Filtering less than or equal to five words in the title.");
+            Console.WriteLine("\ta - Filter with more than five words in the title.");
+            Console.WriteLine("\tb - Filter less than or equal to five words in the title.");
             Console.WriteLine("\tc - Exit Aplication.");
             Console.Write("Your option? ");
         }
