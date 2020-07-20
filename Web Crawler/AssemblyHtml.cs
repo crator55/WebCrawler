@@ -1,8 +1,6 @@
 ﻿using HtmlAgilityPack;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 
 namespace Web_Crawler
@@ -44,15 +42,14 @@ namespace Web_Crawler
             catch (System.Exception ex)
             {
                 throw ex;
-            }
-           
+            }          
         }
         private static string GetSpecificNode(HtmlNode htmlNode, string firstChild, string selector, string nameClass)
         {
             try
             {
                 int indexPoints = htmlNode.InnerText.IndexOf("points");
-                int indexComments = htmlNode.InnerText.IndexOf("comments ");
+                int indexComments = htmlNode.InnerText.IndexOf("comments");
                 if (indexPoints == -1 & indexComments == -1 &nameClass!="title")
                 {
                     return "0";
@@ -64,7 +61,6 @@ namespace Web_Crawler
             {
                 throw ex;
             }
-         
         }
         private static List<HtmlNode> GetBodyNode(HtmlDocument htmlDocument, string firstChild, string selector, string nameClass)
         {
