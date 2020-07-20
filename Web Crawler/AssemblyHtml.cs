@@ -49,5 +49,5 @@ namespace Web_Crawler
             return htmlDocument.DocumentNode.Descendants($"{firstChild}")
                     .Where(node => node.GetAttributeValue($"{selector}", "").Equals($"{nameClass}")).Take(30).ToList();
         }
-    }
+    } 
 }
